@@ -14,7 +14,7 @@ Once you have this repo checked out,
 1. Download and install Docker
 2. Start the server and make changes
     ```
-    ./bin/run
+    ./bin/dev.sh
     ```
 
 You can view your changes at : `http://localhost:4000` or `http://192.168.99.100:4000` (if you're using docker-machine)
