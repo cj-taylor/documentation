@@ -50,9 +50,12 @@ keytool -importkeystore -srckeystore server.p12 -srcstoretype pkcs12 -srcalias s
 ```
 
 - Creating a **self-signed CA (EXPIRES IN 360 DAYS)** with java keystore.
-```
+The example below shows how to regenerate the keystore on boot.
+```bash
+$ cat /opt/spinnaker/bin/secrets
+# Regenerate a new keystore on boot of Spinnaker
+export YOUR_KEYSTORE_PASSWORD="someRandomPa33W0rdForKeystoreForELBtoGateCommunication"
 apt-get install -y openjdk-7-jre-headless
-export YOUR_KEYSTORE_PASSWORD=""
 echo -e "\n\n\n\n\n\ny\n" | keytool -genkey -keyalg RSA -alias server -keystore keystore.jks -storepass ${YOUR_KEYSTORE_PASSWORD} -validity 360 -keysize 2048
 mv keystore.jks /opt/spinnaker/config/
 ```
